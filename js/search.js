@@ -5,7 +5,7 @@ let currentResults = 0;
 const resultsPerPage = 6;
 
 // Carrega o arquivo JSON e armazena os dados na variável pages
-fetch('pages.json')
+fetch('/json/pages.json')
     .then(response => response.json())
     .then(data => {
         pages = data; // Armazena as páginas no array
