@@ -2,6 +2,7 @@
 /*        Variaveis         */
 :root {
     --tema-principal: #2e9ece00;
+    --sub-tema: white;
 }
 
 /*        Principal         */
@@ -43,8 +44,8 @@ header {
     top: 0;
     width: 250px;
     height: 100%;
-    background-color: #444;
-    color: #fff;
+    background-color: white;
+    color: black;
     transition: left 0.3s;
 }
 
