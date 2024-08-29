@@ -15,32 +15,37 @@ fetch('/json/pages.json')
 // Função para pesquisar os títulos
 document.getElementById('search').addEventListener('input', function() {
     const searchTerm = this.value.toLowerCase();
+
+    // Limpa os resultados e oculta o botão "Mostrar Mais"
     resultsContainer.innerHTML = '';
     currentResults = 0;
-    showMoreButton.classList.add('hidden'); // Esconde o botão "Mostrar Mais"
+    showMoreButton.classList.add('hidden');
 
-    // Filtra as páginas com base no título
-    const filteredPages = pages.filter(page => 
-        page.title.toLowerCase().includes(searchTerm)
-    );
+    // Verifica se há caracteres digitados
+    if (searchTerm.length > 0) {
+        // Filtra as páginas com base no título
+        const filteredPages = pages.filter(page => 
+            page.title.toLowerCase().includes(searchTerm)
+        );
 
-    // Exibe até 6 resultados
-    displayResults(filteredPages.slice(0, resultsPerPage));
+        // Exibe até 6 resultados
+        displayResults(filteredPages.slice(0, resultsPerPage));
 
-    // Se houver mais resultados, mostra o botão "Mostrar Mais"
-    if (filteredPages.length > resultsPerPage) {
-        showMoreButton.classList.remove('hidden');
-    }
-
-    // Adiciona evento para o botão "Mostrar Mais"
-    showMoreButton.onclick = () => {
-        displayResults(filteredPages.slice(currentResults, currentResults + resultsPerPage));
-        currentResults += resultsPerPage;
-
-        if (currentResults >= filteredPages.length) {
-            showMoreButton.classList.add('hidden'); // Esconde o botão se não houver mais resultados
+        // Se houver mais resultados, mostra o botão "Mostrar Mais"
+        if (filteredPages.length > resultsPerPage) {
+            showMoreButton.classList.remove('hidden');
         }
-    };
+
+        // Adiciona evento para o botão "Mostrar Mais"
+        showMoreButton.onclick = () => {
+            displayResults(filteredPages.slice(currentResults, currentResults + resultsPerPage));
+            currentResults += resultsPerPage;
+
+            if (currentResults >= filteredPages.length) {
+                showMoreButton.classList.add('hidden'); // Esconde o botão se não houver mais resultados
+            }
+        };
+    }
 });
 
 // Função para exibir resultados
