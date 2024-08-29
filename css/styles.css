@@ -45,6 +45,7 @@ header {
     width: 250px;
     height: 100%;
     background-color: white;
+    border-right: 1px solid #333;
     color: #fff;
     transition: left 0.3s;
     padding: 10px;
