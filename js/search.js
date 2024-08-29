@@ -1,44 +1,54 @@
-const pageLinks = document.querySelectorAll('.menu-link');
+let pages = [];
 const resultsContainer = document.getElementById('search-results');
+const showMoreButton = document.getElementById('show-more');
+let currentResults = 0;
+const resultsPerPage = 6;
 
-pageLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-        event.preventDefault(); // Impede o redirecionamento imediato
-        const url = this.getAttribute('href');
+// Carrega o arquivo JSON e armazena os dados na variável pages
+fetch('pages.json')
+    .then(response => response.json())
+    .then(data => {
+        pages = data; // Armazena as páginas no array
+    })
+    .catch(error => console.error('Erro ao carregar o arquivo JSON:', error));
 
-        // Faz uma requisição para obter o conteúdo da página
-        fetch(url)
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error('Erro ao carregar a página');
-            })
-            .then(html => {
-                // Cria um elemento temporário para buscar o título
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const title = doc.title;
-
-                // Adiciona o título ao container de resultados
-                resultsContainer.innerHTML = `<div><a href="${url}">${title}</a></div>`;
-            })
-            .catch(error => {
-                console.error(error);
-                resultsContainer.innerHTML = 'Erro ao buscar o título.';
-            });
-    });
-});
-
-// Pesquisa por título na barra de pesquisa
+// Função para pesquisar os títulos
 document.getElementById('search').addEventListener('input', function() {
     const searchTerm = this.value.toLowerCase();
     resultsContainer.innerHTML = '';
+    currentResults = 0;
+    showMoreButton.classList.add('hidden'); // Esconde o botão "Mostrar Mais"
 
-    pageLinks.forEach(link => {
-        const title = link.textContent.toLowerCase();
-        if (title.includes(searchTerm)) {
-            resultsContainer.innerHTML += `<div><a href="${link.getAttribute('href')}">${link.textContent}</a></div>`;
+    // Filtra as páginas com base no título
+    const filteredPages = pages.filter(page => 
+        page.title.toLowerCase().includes(searchTerm)
+    );
+
+    // Exibe até 6 resultados
+    displayResults(filteredPages.slice(0, resultsPerPage));
+
+    // Se houver mais resultados, mostra o botão "Mostrar Mais"
+    if (filteredPages.length > resultsPerPage) {
+        showMoreButton.classList.remove('hidden');
+    }
+
+    // Adiciona evento para o botão "Mostrar Mais"
+    showMoreButton.onclick = () => {
+        displayResults(filteredPages.slice(currentResults, currentResults + resultsPerPage));
+        currentResults += resultsPerPage;
+
+        if (currentResults >= filteredPages.length) {
+            showMoreButton.classList.add('hidden'); // Esconde o botão se não houver mais resultados
         }
-    });
+    };
 });
+
+// Função para exibir resultados
+function displayResults(results) {
+    results.forEach(page => {
+        const resultItem = document.createElement('div');
+        resultItem.innerHTML = `<a href="${page.url}">${page.title}</a>`;
+        resultsContainer.appendChild(resultItem);
+    });
+    currentResults += results.length; // Atualiza o número de resultados exibidos
+}
