@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Função para carregar o cabeçalho
     function loadHeader() {
-        fetch('/path/to/header.html') // Substitua pelo caminho correto para o seu arquivo header.html
+        fetch('/header.html') // Substitua pelo caminho correto para o seu arquivo header.html
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Erro ao carregar o cabeçalho');
