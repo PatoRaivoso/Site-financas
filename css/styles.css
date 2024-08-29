@@ -1,4 +1,15 @@
+
+/*        Variaveis         */
+:root {
+    --tema-principal: #2e9ece00;
+}
+
+/*        Principal         */
 * {
     margin: 0px;
     padding: 0px;
+}
+
+header {
+    background-color: --tema-principal;
 }
