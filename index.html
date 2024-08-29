@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Finanças e investimentos</title>
-    
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Exemplo de Header</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -16,29 +14,31 @@
             <button id="menu-toggle">Menu</button>
         </div>
     </header>
+    
     <nav id="sidebar" class="sidebar">
         <ul id="menu-list">
             <li>
-                <a href="pagina1.html" class="menu-link">Página 1</a>
+                <a href="#" class="menu-item">Item 1</a>
+                <ul class="submenu">
+                    <li><a href="subitem1.html">Subitem 1</a></li>
+                    <li><a href="subitem2.html">Subitem 2</a></li>
+                </ul>
             </li>
             <li>
-                <a href="pagina2.html" class="menu-link">Página 2</a>
+                <a href="#" class="menu-item">Item 2</a>
+                <ul class="submenu">
+                    <li><a href="subitem3.html">Subitem 3</a></li>
+                    <li><a href="subitem4.html">Subitem 4</a></li>
+                </ul>
             </li>
-            <li>
-                <a href="pagina3.html" class="menu-link">Página 3</a>
-            </li>
+            <!-- Adicione mais itens conforme necessário -->
         </ul>
     </nav>
 
     <div id="search-results" class="search-results"></div>
+    <button id="show-more" class="hidden">Mostrar Mais</button>
 
     <script src="/js/menu.js"></script>
     <script src="/js/search.js"></script>
-    <main>
-        
-    </main>
-    <footer>
-        
-    </footer>
 </body>
 </html>
