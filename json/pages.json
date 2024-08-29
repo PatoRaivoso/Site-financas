@@ -1,0 +1,11 @@
+[
+    { "title": "Página Inicial", "url": "index.html" },
+    { "title": "Sobre", "url": "sobre.html" },
+    { "title": "Serviços", "url": "servicos.html" },
+    { "title": "Contato", "url": "contato.html" },
+    { "title": "Blog", "url": "blog.html" },
+    { "title": "Galeria", "url": "galeria.html" },
+    { "title": "FAQ", "url": "faq.html" },
+    { "title": "Termos de Serviço", "url": "termos.html" },
+    { "title": "Política de Privacidade", "url": "privacidade.html" }
+]
