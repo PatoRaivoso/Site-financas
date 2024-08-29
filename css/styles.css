@@ -74,8 +74,7 @@ header {
 .submenu a {
     color: #00a2d8;
     text-decoration: none;
-    margin-left: 20px;
-    padding: 5px;
+    margin: 5px 0px 5px 15px;
 }
 
 .search-results {
