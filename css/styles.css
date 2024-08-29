@@ -71,6 +71,11 @@ header {
     padding-left: 15px;
     display: none; /* Oculta subitens inicialmente */
 }
+.submenu a {
+    color: #00a2d8;
+    text-decoration: none;
+    margin-left: 30px;
+}
 
 .search-results {
     margin-top: 20px;
