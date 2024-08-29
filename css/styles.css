@@ -53,10 +53,6 @@ header {
 .sidebar.open {
     left: 0;
 }
-.sidebar a {
-    color: black;
-    text-decoration: none;
-}
 
 #menu-list {
     list-style-type: none;
@@ -64,8 +60,10 @@ header {
 }
 
 .menu-item {
+    margin-left: 20px;
     color: #00a2d8;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .submenu {
